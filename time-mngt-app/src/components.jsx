@@ -2,37 +2,38 @@ import React, {useState, useRef} from 'react';
 
 
 export const ComboBox=({ onTextInput, addMissing, data, error, onSubmit, label, ...props })=>{
-  
   const [matches, setMatches] = useState(data);
+  const [selected, setSelection] = useState(null);
+  
   const filter = useRef()
   window.filter = filter;
 
-//   function filterList(query){
-//     if(query === "") {
-//       setMatches(data);
-//       return
-//     }
-//     let list = matches.filter(item => (item.toLowerCase() === query.toLowerCase()))
-//     if (!list.includes(query)){
-//      list.push(query)
-//     }
-//     if (list.length > 0){
-//       list = data
-//     } 
-//     setMatches(list);
-//   }
+  function filterList(query){
+    // if(query === "") {
+    //   setMatches(data);
+    //   return
+    // }
+    let list = data.filter(item => {
+      item = item.toLowerCase()
+      return item.includes(query.toLowerCase())
+    })
+
+    if (!list.includes(query)){
+     list.push(query)
+    }
+    setMatches(list);
+  }
 
   return(
     <div className={"combo-box" + (props?.className ? props.className : "")} {...props?.style}>
       <p className="combo-label"> {label} </p>
-      <input disabled ref={filter}
-       className={"combo-filter" + (error ? "error" : "")} 
-      />
+      <input ref={filter} onInput={e => filterList(e.target.value)} />
       <ul className="combo-list">
         {matches.map((item, idx) => 
-          <li key={idx} className="combo-item" onClick={e => {
+          <li key={idx} className={"combo-item " + (selected === idx ? "active" : "" )} onClick={e => {
             filter.current.value = item
             onTextInput(item)
+            setSelection(idx)
           }}> {item} </li>
         )}
       </ul>
@@ -40,7 +41,7 @@ export const ComboBox=({ onTextInput, addMissing, data, error, onSubmit, label, 
   )
 }
 
-export const ActivityForm = ({ onSubmit }) =>{
+export const ActivityForm = ({ onSubmit, hideForm }) =>{
   const [activity, setActivity] = useState(null);
   const [timeCost, setTimeCost] = useState(null);
   const [time, setTime] = useState("hours");
@@ -66,18 +67,18 @@ export const ActivityForm = ({ onSubmit }) =>{
       freq,
       time
     })
-    e.target.reset();
+
+    hideAddForm();
   }
 
   function hideAddForm(e){
     document.querySelector('.overlay').classList.remove('show');
-    document.querySelector('#activity-form').classList.add('hide');
-    document.querySelector('#form').reset();
+    hideForm()
   }
 
   return(
-    <div id="activity-form" className="hide">
-      <form method="post" id="form" onSubmit={addActivity}>
+    <div id="activity-form">
+      <form id="form" onSubmit={addActivity}>
         <ComboBox error={error} data={sampleActvities} addMissing={true} label="Activity" onTextInput={act => setActivity(act)} />
         
         <div className="flexbox p-1 pt-0 pb-0" style={{margin: '10px auto'}}>
@@ -101,7 +102,7 @@ export const ActivityForm = ({ onSubmit }) =>{
         </div>
 
         <div className="flexbox p-2 pt-0 pb-0">
-          <button onClick={hideAddForm}> add </button>
+          <button> add </button>
           <button type="button" onClick={hideAddForm}> Cancel </button>
         </div>
       </form>

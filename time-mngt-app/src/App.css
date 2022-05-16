@@ -215,10 +215,13 @@ input{
   transition: .2s;
   border-bottom: 1px solid lavender;
 }
+.combo-item.active{
+  box-shadow: 0px 0px 0px 2px black;
+}
 
 .combo-item:hover{
   transition: .2s;
-  box-shadow: 0px 0px 0px 2px black;
+  box-shadow: 0px 0px 0px 2px grey;
 }
 
 .combo-item:last-child{

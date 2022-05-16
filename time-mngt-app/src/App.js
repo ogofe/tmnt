@@ -9,29 +9,33 @@ const App =()=> {
   const [time, setTime] = useState("weekly")
   const [freeTime, setFreeTime] = useState(totalHours)
   const [showResult, setShowResult] = useState(false)
+  const [showForm, setFormVisibility] = useState(false)
 
   function addActivity(data){
     setActivities([...activities, data])
+    setFormVisibility(false)
   }
 
   function getFreeTime(){
     if (activities.length < 1){
       return
     }
+
     let _freeTime = totalHours;
     for (let act of activities){
-      let cost = act.timeCost;
       if (act.time === "mins"){
-        cost = cost / 60
+        act.timeCost = act.timeCost / 60
       }
-      setFreeTime(_freeTime - (act.freq * cost))
+
+      _freeTime = _freeTime - (act.freq * act.timeCost)
+      setFreeTime(_freeTime)
     }
     setShowResult(true);
   }
 
   function showAddForm(e){
     document.querySelector('.overlay').classList.add('show')
-    document.querySelector('#activity-form').classList.remove('hide')
+    setFormVisibility(true);
   }
 
   function parseTime(_time){
@@ -88,7 +92,8 @@ const App =()=> {
               </div>
             )}
           </ul>
-         <ActivityForm onSubmit={addActivity}/> 
+
+         {showForm && <ActivityForm onSubmit={addActivity} hideForm={() => setFormVisibility(false)} />}
         </div>
 
         <button onClick={getFreeTime}> Calculate free time </button>
@@ -105,7 +110,7 @@ const App =()=> {
       </div>
 
       <footer>
-        <p> Made with <span role="img"> 💜 </span> by <a className="app-link" href="https://jtogofe.netlify.app">Joel O. Tanko</a> </p>
+        <p> Made with <span aria-labelledby="" role="img"> 💜 </span> by <a className="app-link" href="https://jtogofe.netlify.app">Joel O. Tanko</a> </p>
       </footer>
     </div>
 
