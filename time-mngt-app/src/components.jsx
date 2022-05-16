@@ -7,20 +7,20 @@ export const ComboBox=({ onTextInput, addMissing, data, error, onSubmit, label, 
   const filter = useRef()
   window.filter = filter;
 
-  function filterList(query){
-    if(query === "") {
-      setMatches(data);
-      return
-    }
-    let list = matches.filter(item => (item.toLowerCase() === query.toLowerCase()))
-    if (!list.includes(query)){
-     list.push(query)
-    }
-    if (list.length > 0){
-      list = data
-    } 
-    setMatches(list);
-  }
+//   function filterList(query){
+//     if(query === "") {
+//       setMatches(data);
+//       return
+//     }
+//     let list = matches.filter(item => (item.toLowerCase() === query.toLowerCase()))
+//     if (!list.includes(query)){
+//      list.push(query)
+//     }
+//     if (list.length > 0){
+//       list = data
+//     } 
+//     setMatches(list);
+//   }
 
   return(
     <div className={"combo-box" + (props?.className ? props.className : "")} {...props?.style}>
