@@ -43,7 +43,7 @@ export const ComboBox=({ onTextInput, addMissing, data, error, onSubmit, label, 
 
 export const ActivityForm = ({ onSubmit, hideForm }) =>{
   const [activity, setActivity] = useState(null);
-  const [timeCost, setTimeCost] = useState(null);
+  const [timeCost, setTimeCost] = useState(1);
   const [time, setTime] = useState("hours");
   const [freq, setFreq] = useState(1);
   const [error, setError] = useState(false);
@@ -84,14 +84,14 @@ export const ActivityForm = ({ onSubmit, hideForm }) =>{
         <div className="flexbox p-1 pt-0 pb-0" style={{margin: '10px auto'}}>
           <div className="div">
             <span className="label">Daily occurence </span>
-            <input type="number" step="1" min="1" defaultValue="1" max="7" onInput={e => setFreq(e.target.value)}/>
+            <input type="number" step="1" min="1" defaultValue={freq} max="7" onInput={e => setFreq(e.target.value)}/>
           </div>
 
           <div className="div">
             <span className="label">Time cost </span>
             
             <div className="flexbox">
-              <input required type="number" max="60" min="1" defaultValue="1" onInput={e => setTimeCost(e.target.value)} />
+              <input required type="number" max="60" min="1" defaultValue={timeCost} onInput={e => setTimeCost(e.target.value)} />
             
               <select defaultValue={time} className="time-unit" onInput={e => setTime(e.target.value)}>
                 <option> hours </option>
