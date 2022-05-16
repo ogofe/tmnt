@@ -72,7 +72,7 @@ export const ActivityForm = ({ onSubmit }) =>{
   function hideAddForm(e){
     document.querySelector('.overlay').classList.remove('show');
     document.querySelector('#activity-form').style.display = 'none';
-    document.querySelector('#form').reset();
+    document.querySelector('#form').reset({time: 'hours'});
   }
 
   return(
@@ -92,9 +92,9 @@ export const ActivityForm = ({ onSubmit }) =>{
             <div className="flexbox">
               <input required type="number" max="60" min="1" defaultValue="1" onInput={e => setTimeCost(e.target.value)} />
             
-              <select className="time-unit" onChange={e => setTime(e.target.value)}>
-                <option selected> hours </option>
-                <option> mins </option>
+              <select className="time-unit" name="time" onChange={e => setTime(e.target.value)}>
+                <option value="hours"> hours </option>
+                <option value="mins"> mins </option>
               </select>
             </div>
           </div>
