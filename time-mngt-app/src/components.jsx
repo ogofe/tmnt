@@ -7,6 +7,21 @@ export const ComboBox=({ onTextInput, addMissing, data, error, onSubmit, label, 
   const filter = useRef()
   window.filter = filter;
 
+//   function filterList(query){
+//     if(query === "") {
+//       setMatches(data);
+//       return
+//     }
+//     let list = matches.filter(item => (item.toLowerCase() === query.toLowerCase()))
+//     if (!list.includes(query)){
+//      list.push(query)
+//     }
+//     if (list.length > 0){
+//       list = data
+//     } 
+//     setMatches(list);
+//   }
+
   return(
     <div className={"combo-box" + (props?.className ? props.className : "")} {...props?.style}>
       <p className="combo-label"> {label} </p>
@@ -28,7 +43,7 @@ export const ComboBox=({ onTextInput, addMissing, data, error, onSubmit, label, 
 export const ActivityForm = ({ onSubmit }) =>{
   const [activity, setActivity] = useState(null);
   const [timeCost, setTimeCost] = useState(null);
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState("hours");
   const [freq, setFreq] = useState(1);
   const [error, setError] = useState(false);
   const sampleActvities = [
@@ -51,13 +66,13 @@ export const ActivityForm = ({ onSubmit }) =>{
       freq,
       time
     })
-    hideAddForm();
+    e.target.reset();
   }
 
   function hideAddForm(e){
     document.querySelector('.overlay').classList.remove('show');
-    document.querySelector('#activity-form').style.display = 'none';
-//     document.querySelector('#form').reset({time: 'hours'});
+    document.querySelector('#activity-form').classList.add('hide');
+    document.querySelector('#form').reset();
   }
 
   return(
@@ -77,9 +92,9 @@ export const ActivityForm = ({ onSubmit }) =>{
             <div className="flexbox">
               <input required type="number" max="60" min="1" defaultValue="1" onInput={e => setTimeCost(e.target.value)} />
             
-              <select className="time-unit" defaultValue="hours" name="time" onChange={e => setTime(e.target.value)}>
-                <option value="hours"> hours </option>
-                <option value="mins"> mins </option>
+              <select defaultValue={time} className="time-unit" onInput={e => setTime(e.target.value)}>
+                <option> hours </option>
+                <option> mins </option>
               </select>
             </div>
           </div>
