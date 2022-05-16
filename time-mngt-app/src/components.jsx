@@ -92,7 +92,7 @@ export const ActivityForm = ({ onSubmit }) =>{
             <div className="flexbox">
               <input required type="number" max="60" min="1" defaultValue="1" onInput={e => setTimeCost(e.target.value)} />
             
-              <select defaultValue={time} className="time-unit" onInput={e => setTime(e.target.value)}>
+              <select className="time-unit" onInput={e => setTime(e.target.value)}>
                 <option> hours </option>
                 <option> mins </option>
               </select>
