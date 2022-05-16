@@ -23,11 +23,12 @@ const App =()=> {
 
     let _freeTime = totalHours;
     for (let act of activities){
+      let cost = act.timeCost
       if (act.time === "mins"){
-        act.timeCost = act.timeCost / 60
+        cost = cost / 60
       }
 
-      _freeTime = _freeTime - (act.freq * act.timeCost)
+      _freeTime = _freeTime - (act.freq * cost)
       setFreeTime(_freeTime)
     }
     setShowResult(true);
