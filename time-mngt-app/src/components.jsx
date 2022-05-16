@@ -66,7 +66,7 @@ export const ActivityForm = ({ onSubmit }) =>{
       freq,
       time
     })
-    e.target.reset();
+    hideAddForm();
   }
 
   function hideAddForm(e){
