@@ -1,0 +1,266 @@
+.App {
+  text-align: center;
+  max-width: 600px;
+  width: 95%;
+  margin: 5rem auto;
+  /*margin-top: 10vmin;*/
+  align-self: center;
+  justify-self: center;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.result{
+  margin-top: 10px;
+  padding: 10px 7px;
+  background-color: #61c3de;
+  border-radius: 5px;
+}
+
+.result >select{
+  display: block;
+  margin-left: auto;
+  padding: 7px;
+  border-radius: 5px;
+}
+
+.result > h4{
+  margin-top: 5px;
+  text-align: left;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.activities{
+  list-style: none;
+  padding-left: 0;
+}
+
+p.time{
+  margin: 0;
+  text-align: left;
+}
+
+.act{
+  margin: 0;
+  text-align: left;
+}
+
+.activity{
+  padding: 5px;
+  /*border-bottom: 1px solid grey;*/
+  border-radius: 7px;
+  box-shadow: 3px 4px 8px 0px #00000030;
+}
+
+.activity:not(:last-child){
+  margin-bottom: 15px;
+}
+
+.App-logo {
+  height: 30px;
+  pointer-events: none;
+}
+
+footer > p {
+  font-weight: 600;
+}
+
+.app-link{
+  text-decoration: none;
+  color: cornflowerblue;
+}
+
+.App-header {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px 5px 0px 0px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+span.label{
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.div{
+  text-align: left;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.p-2{
+  padding: 1.725rem;
+}
+
+.mt-0{
+  margin-top: 0;
+}
+
+button{
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  text-transform: capitalize;
+  min-width: max-content;
+  /*width: 100px;*/
+  font-size: 14px;
+  font-weight: 600;
+}
+
+::scrollbar-thumb{
+  background-color: red;
+}
+
+input{
+  padding: 10px;
+  width: -webkit-fill-available;
+  width: -moz-fill-available;
+  border-radius: 7px;
+  border: 1px solid grey;
+}
+
+.flexbox{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#activity-form {
+  width: 300px;
+  top: 10vmin;
+  position: absolute;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  z-index: 40;
+  background: #fff;
+  visibility: visible;
+}
+
+.p-1{
+  padding: 1rem;
+}
+
+#activity-form.hide{
+  visibility: hidden;
+}
+
+.error{
+  border-color: red;
+}
+
+.time-unit{
+  padding: 7px;
+  margin-left: 5px;
+}
+
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  opacity: .5;
+  z-index: 3;
+  transition: .3s;
+  visibility: hidden;
+}
+
+.overlay.show{
+  visibility: visible;
+}
+
+.pt-0{
+  padding-top: 0;
+}
+
+.pb-0{
+  padding-bottom: 0;
+}
+
+.combo-box{
+  display: block;
+  width: 90%;
+  margin: auto;
+  padding: 15px;
+  border-bottom: 1px solid lavender;
+}
+
+.combo-label{
+  text-align: left;
+  margin-top: 0;
+  font-weight: 600;
+}
+
+.combo-list{
+  margin: 0;
+  padding: 20px 10px;
+  max-height: 150px;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.combo-item{
+  text-align: left;
+  padding: 10px;
+  cursor: pointer;
+  transition: .2s;
+  border-bottom: 1px solid lavender;
+}
+
+.combo-item:hover{
+  transition: .2s;
+  box-shadow: 0px 0px 0px 2px black;
+}
+
+.combo-item:last-child{
+  border-bottom: none;
+}
+
+
+.combo-filter{
+  display: block;
+  padding: 10px;
+}
+
+
+@media screen and (min-width: 300px){
+  #activity-form{
+    left: 1.5%;
+  }
+}
+
+
+@media screen and (min-width: 320px){
+  #activity-form{
+    left: 5%;
+  }
+}
+
+
+@media screen and (min-width: 502px){
+  #activity-form{
+    left: 20%;
+  }
+}
+
+
+@media screen and (min-width: 720px){
+  #activity-form{
+    left: 30%;
+  }
+}
+
+@media screen and (min-width: 1092px){
+  #activity-form{
+    left: 40%;
+  }
+}
