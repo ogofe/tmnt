@@ -6,7 +6,6 @@ import {ActivityForm} from './components';
 const App =()=> {
   const [activities, setActivities] = useState([]);
   const totalHours = 168;
-  const addForm = useRef();
   const [time, setTime] = useState("weekly")
   const [freeTime, setFreeTime] = useState(totalHours)
   const [showResult, setShowResult] = useState(false)
@@ -106,7 +105,7 @@ const App =()=> {
       </div>
 
       <footer>
-        <p> Made with 💜 by <a className="app-link" href="https://jtogofe.netlify.app">Joel O. Tanko</a> </p>
+        <p> Made with <span role="img"> 💜 </span> by <a className="app-link" href="https://jtogofe.netlify.app">Joel O. Tanko</a> </p>
       </footer>
     </div>
 
