@@ -43,7 +43,7 @@ export const ComboBox=({ onTextInput, addMissing, data, error, onSubmit, label, 
 export const ActivityForm = ({ onSubmit }) =>{
   const [activity, setActivity] = useState(null);
   const [timeCost, setTimeCost] = useState(null);
-  const [time, setTime] = useState("hours");
+  const [time, setTime] = useState("mins");
   const [freq, setFreq] = useState(1);
   const [error, setError] = useState(false);
   const sampleActvities = [
@@ -71,7 +71,7 @@ export const ActivityForm = ({ onSubmit }) =>{
 
   function hideAddForm(e){
     document.querySelector('.overlay').classList.remove('show');
-    document.querySelector('#activity-form').classList.add('hide');
+    document.querySelector('#activity-form').style.display = 'none';
     document.querySelector('#form').reset();
   }
 
@@ -92,7 +92,7 @@ export const ActivityForm = ({ onSubmit }) =>{
             <div className="flexbox">
               <input required type="number" max="60" min="1" defaultValue="1" onInput={e => setTimeCost(e.target.value)} />
             
-              <select className="time-unit" onInput={e => setTime(e.target.value)}>
+              <select selected={time} className="time-unit" onChange={e => setTime(e.target.value)}>
                 <option> hours </option>
                 <option> mins </option>
               </select>
